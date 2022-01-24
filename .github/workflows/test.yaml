@@ -24,7 +24,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: >-
+        run: |
           python -m pip3 install --upgrade pip
           pip3 install setuptools wheel twine
           
@@ -32,6 +32,6 @@ jobs:
         env:
           TWINE_USERNAME: ${{ secrets.TEST_PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN  }}
-        run: >-
-          python setup.py sdist bdist_wheel twine upload 
-          --repository-url https://test.pypi.org/legacy/ dist/*
+        run: |
+          python setup.py sdist bdist_wheel 
+          twine upload --repository-url https://test.pypi.org/legacy/ dist/*
