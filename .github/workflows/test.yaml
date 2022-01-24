@@ -25,8 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip3 install --upgrade pip
-          pip3 install setuptools wheel twine
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
           
       - name: Build and publish
         env:
