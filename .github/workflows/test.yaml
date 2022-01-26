@@ -2,8 +2,8 @@ name: Publish parse-episode 📦 to TestPyPI
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     tags:        
       - v*
     paths-ignore:
@@ -11,8 +11,8 @@ on:
       - "*.md"
       - "!.github/workflows/test.yaml"
   pull_request:
-    branches:    
-      - 'main'
+    # branches:    
+    #   - 'main'
     paths-ignore:
       - LICENSE
       - "*.md"
