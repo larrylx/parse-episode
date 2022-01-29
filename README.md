@@ -1,6 +1,7 @@
 # parse-episode
 
-Parse episode from a TV show file name or title.
+- Parse episode from a TV show file name or title.
+- Scrape TV series from DMHY.
 
 You can install this package from [test.pipy.org](https://test.pypi.org/project/parse-episode/).
 
