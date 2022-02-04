@@ -7,13 +7,13 @@ You can install this package from [test.pipy.org](https://test.pypi.org/project/
 
 ## Useage Example:
 ```Python
->>>from parse_episode import rarbg
+>>>from parse_episode import Parse
 
->>>parse = rarbg.Parse("The.Book.of.Boba.Fett.S01E03.Chapter.3.2160p.WEB-DL.DDP5.1.Atmos.DV.MKV.x265")
+>>>parse = Parse("The.Book.of.Boba.Fett.S01E03.Chapter.3.2160p")
 >>>print(parse.get_episode())
 3
 
->>>parse = rarbg.Parse("The.Rookie.S04E12.The.Knock.1080p.AMZN.WEBRip.DDP5.1.x264")
+>>>parse = Parse("The.Rookie.S04E12.The.Knock.1080p")
 >>>print(parse.get_episode())
 12
 
@@ -21,11 +21,11 @@ You can install this package from [test.pipy.org](https://test.pypi.org/project/
 # Put all keywords in single string and seprate by "."，case-insensitive.
 # Example string: "S02.2160p.H264"
 
->>>parse = rarbg.Parse("The.Rookie.S04E12.The.Knock.1080p.AMZN.WEBRip.DDP5.1.x264", include = "2160p.H264")
+>>>parse = Parse("The.Rookie.S04E12.The.Knock.1080p.x264", include = "2160p.H264")
 >>>print(parse.get_episode())
 None
 
->>>parse = rarbg.Parse("The.Book.of.Boba.Fett.S01E03.Chapter.3.2160p.WEB-DL.DDP5.1.Atmos.DV.MKV.x265-ShowkotKebabaGhar", exclude = "2160P")
+>>>parse = Parse("The.Book.of.Boba.Fett.S01E03.Chapter.3.2160p", exclude = "2160P")
 >>>print(parse.get_episode())
 None
 ```
