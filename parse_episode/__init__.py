@@ -1,3 +1,3 @@
 name = "paese_episode"
 
-from utils import *
+from .utils import *
