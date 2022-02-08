@@ -33,4 +33,16 @@ class Parse(object):
         if e:
             return int(e.group(1))
 
+        e = search(r"第(\d+)集", self.title)
+        if e:
+            return int(e.group(1))
+
+        e = search(r"\W(\d\d)\W", self.title)
+        if e:
+            return int(e.group(1))
+
+        e = search(r" (\d\d) ", self.title)
+        if e:
+            return int(e.group(1))
+
         return None
