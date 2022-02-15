@@ -5,7 +5,7 @@ with open("README.md", "r") as md:
 
 setuptools.setup(
   name="parse-episode",
-  version="0.0.8",
+  version="0.0.9",
   author="Larry Liang",
   author_email="0lambdas_amici@icloud.com",
   description="Parse episode from a TV show file name or title.",

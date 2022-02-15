@@ -7,9 +7,9 @@ from typing import Union
 class Scraper(object):
     def __init__(self,
                  search_title: str,
-                 source_url: str = "https://dmhy.b168.net/topics/list/page/1?keyword=",
+                 source_url: str = "https://dmhy.org",
                  header=None):
-        self.url = source_url
+        self.url = source_url + "/topics/list/page/1?keyword="
         self.title = search_title
         if header is None:
             self.header = {
@@ -18,7 +18,12 @@ class Scraper(object):
             }
 
     def get_series_list(self) -> list:
-        respond = requests.get(self.url + self.title, self.header)
+        try:
+            respond = requests.get(self.url + self.title, self.header, timeout=0.01)
+        except requests.exceptions.RequestException as e:
+            print("Using Backup dmhy URL")
+            respond = requests.get("https://dmhy.b168.net" + self.title, self.header, timeout=5)
+
         if respond.status_code != 200:
             print('Uable to Connect to dmhy')
             return []
