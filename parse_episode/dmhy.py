@@ -19,7 +19,7 @@ class Scraper(object):
 
     def get_series_list(self) -> list:
         try:
-            respond = requests.get(self.url + self.title, self.header, timeout=0.01)
+            respond = requests.get(self.url + self.title, self.header, timeout=5)
         except requests.exceptions.RequestException as e:
             print("Using Backup dmhy URL")
             respond = requests.get("https://dmhy.b168.net" + self.title, self.header, timeout=5)
