@@ -45,4 +45,4 @@ class Parse(object):
         if e:
             return int(e.group(1))
 
-        return None
+        return ""
