@@ -8,8 +8,11 @@ class Scraper(object):
     def __init__(self,
                  search_title: str,
                  source_url: str = "https://dmhy.org",
-                 header=None):
-        self.url = source_url + "/topics/list/page/1?keyword="
+                 backup_url: str = "https://dmhy.b168.net",
+                 header = None):
+        self.search_url = "/topics/list/page/1?keyword="
+        self.url = source_url + self.search_url
+        self.backup_url = backup_url + self.search_url
         self.title = search_title
         if header is None:
             self.header = {
@@ -22,7 +25,9 @@ class Scraper(object):
             respond = requests.get(self.url + self.title, self.header, timeout=5)
         except requests.exceptions.RequestException as e:
             print("Using Backup dmhy URL")
-            respond = requests.get("https://dmhy.b168.net" + self.title, self.header, timeout=5)
+            respond = requests.get(self.backup_url + self.title, self.header, timeout=5)
+        else:
+            print("Using Main dmhy URL")
 
         if respond.status_code != 200:
             print('Uable to Connect to dmhy')
