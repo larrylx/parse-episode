@@ -45,4 +45,8 @@ class Parse(object):
         if e:
             return int(e.group(1))
 
+        e = search(r"\W(\d\d)END\W", self.title)
+        if e:
+            return int(e.group(1))
+
         return ""
