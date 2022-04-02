@@ -24,13 +24,19 @@ class Scraper(object):
         try:
             respond = requests.get(self.url + self.title, self.header, timeout=5)
         except requests.exceptions.RequestException as e:
-            print("Using Backup dmhy URL")
-            respond = requests.get(self.backup_url + self.title, self.header, timeout=5)
+            try:
+                respond = requests.get(self.backup_url + self.title, self.header, timeout=5)
+            except requests.exceptions.ReadTimeout as e:
+                print(f"Tried '{self.url}' and '{self.backup_url}',")
+                print("dmhy is currently unavailable.")
+                return []
+            else:
+                print("Using Backup dmhy URL")
         else:
             print("Using Main dmhy URL")
 
         if respond.status_code != 200:
-            print('Uable to Connect to dmhy')
+            print('Uable to Connect to dmhy [Statue code != 200]')
             return []
         html = respond.content
         soup = BeautifulSoup(html, 'lxml')
